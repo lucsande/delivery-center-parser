@@ -22,6 +22,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.references :product, foreign_key: true
       t.string :product_quantity
       t.string :payment_type
+      t.string :marketplace_order_payload
+      t.boolean :processed_by_delivery_center, default: false
 
       t.timestamps
     end
