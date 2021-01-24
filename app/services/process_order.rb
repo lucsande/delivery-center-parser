@@ -23,9 +23,9 @@ class ProcessOrder
       ActiveRecord::Base.transaction do
         store = find_or_create_store(parsed_order)
         products = find_or_create_products(parsed_order)
-        payments = find_or_create_payments(parsed_order)
         customer = find_or_create_customer(parsed_order)
-        find_or_create_order(order_payload, parsed_order, store, products, payments, customer)
+        order = find_or_create_order(order_payload, parsed_order, store, products, customer)
+        find_or_create_payments(parsed_order, order)
       end
     end
 
@@ -44,16 +44,6 @@ class ProcessOrder
       products
     end
 
-    def find_or_create_payments(parsed_order)
-      payments = []
-      parsed_order[:payments].each do |order_payment|
-        payment_type = PaymentType.find_or_create_by(name: order_payment[:type])
-        payment = Payment.create(value: order_payment[:value], payment_type_id: payment_type.id)
-        payments.push(payment)
-      end
-      payments
-    end
-
     def find_or_create_customer(parsed_order)
       customer = parsed_order[:customer]
       Customer.create_with(email: customer[:email], contact: customer[:contact])
@@ -62,7 +52,7 @@ class ProcessOrder
 
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Metrics/AbcSize
-    def find_or_create_order(order_payload, parsed_order, store, products, payments, customer)
+    def find_or_create_order(order_payload, parsed_order, store, products, customer)
       product_quantity = 0
       parsed_order[:items].each { |item| product_quantity += item[:quantity] }
 
@@ -90,9 +80,19 @@ class ProcessOrder
                           processed_by_delivery_center: true
                         })
       products.each { |p| OrdersProduct.create(order: order, product: p) }
-      payments.each { |p| OrdersPayment.create(order: order, payment: p) }
 
       order.save
+      order
+    end
+
+    def find_or_create_payments(parsed_order, order)
+      payments = []
+      parsed_order[:payments].each do |order_payment|
+        payment_type = PaymentType.find_or_create_by(name: order_payment[:type])
+        payment = Payment.create(value: order_payment[:value], payment_type_id: payment_type.id, order: order)
+        payments.push(payment)
+      end
+      payments
     end
     # rubocop:enable Metrics/MethodLength
     # rubocop:enable Metrics/AbcSize

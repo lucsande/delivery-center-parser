@@ -12,7 +12,6 @@ module Api
         render json: processed_order, status: :created
         # TODO
         # order:payents one_to_many, sem join_table
-        # escrever testes com erro e sem erro, ver se cria registros na base, se retorna coisa certa, se chama api, etc
         # escrever docs
       rescue ParsingError, DeliveryCenter::ApiError => e
         render json: e, status: :bad_request

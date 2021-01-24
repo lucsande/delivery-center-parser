@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-01-24T13:35:02-03:00">2021-01-24T13:35:02-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-01-24T13:44:27-03:00">2021-01-24T13:44:27-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         35.87
+         37.04
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>17</b> files in total.
-    <b>146</b> relevant lines. 
-    <span class="green"><b>146</b> lines covered</span> and
+    <b>16</b> files in total.
+    <b>141</b> relevant lines. 
+    <span class="green"><b>141</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -53,7 +53,7 @@
       <tr>
         <td class="strong"><a href="#bb5cdd66457f01b12d78b2e7a52463996a8900ac" class="src_link" title="app/controllers/api/v1/orders_controller.rb">app/controllers/api/v1/orders_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>22</td>
+        <td>21</td>
         <td>9</td>
         <td>9</td>
         <td>0</td>
@@ -103,19 +103,9 @@
       <tr>
         <td class="strong"><a href="#a6c7ddc9f24a55107daf30a810897fc8d862720e" class="src_link" title="app/models/order.rb">app/models/order.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>10</td>
-        <td>7</td>
-        <td>7</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#339be4d4867bae2e41d8401d088c6cdc3e8e5359" class="src_link" title="app/models/orders_payment.rb">app/models/orders_payment.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
+        <td>9</td>
+        <td>6</td>
+        <td>6</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -133,9 +123,9 @@
       <tr>
         <td class="strong"><a href="#17262d12f77a047278ff422cb109a1a04e3fb537" class="src_link" title="app/models/payment.rb">app/models/payment.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>4</td>
         <td>3</td>
-        <td>3</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -177,7 +167,7 @@
         <td>44</td>
         <td>44</td>
         <td>0</td>
-        <td>5.7</td>
+        <td>5.5</td>
       </tr>
       
       <tr>
@@ -337,46 +327,40 @@
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">        # escrever testes com erro e sem erro, ver se cria registros na base, se retorna coisa certa, se chama api, etc</code>
+          <code class="ruby">        # escrever docs</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">        # escrever docs</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
           <code class="ruby">      rescue ParsingError, DeliveryCenter::ApiError =&gt; e</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
+        <li class="covered" data-hits="2" data-linenumber="17">
           <span class="hits">2</span>
           
           <code class="ruby">        render json: e, status: :bad_request</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">end</code>
@@ -540,8 +524,8 @@
     <h3>app/models/order.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>6</b> relevant lines. 
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -582,71 +566,22 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">  has_many :orders_payments</code>
+          <code class="ruby">  has_many :payments</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  has_many :payments, through: :orders_payments</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="never" data-hits="" data-linenumber="7">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  # TODO: validate uniqueness of marketplace_id IMPORTANT SO WE DON&#39;T PLACE ORDER TWICE</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-
-      
-        <div class="source_table" id="339be4d4867bae2e41d8401d088c6cdc3e8e5359">
-  <div class="header">
-    <h3>app/models/orders_payment.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class OrdersPayment &lt; ApplicationRecord</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :payment</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :order</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -705,8 +640,8 @@
     <h3>app/models/payment.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -723,16 +658,10 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  has_many :orders, through: :orders_products</code>
+          <code class="ruby">  belongs_to :order</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :payment_type</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="3">
           
           
           <code class="ruby">end</code>
@@ -1057,19 +986,19 @@
         <li class="covered" data-hits="7" data-linenumber="26">
           <span class="hits">7</span>
           
-          <code class="ruby">        payments = find_or_create_payments(parsed_order)</code>
+          <code class="ruby">        customer = find_or_create_customer(parsed_order)</code>
         </li>
       
         <li class="covered" data-hits="7" data-linenumber="27">
           <span class="hits">7</span>
           
-          <code class="ruby">        customer = find_or_create_customer(parsed_order)</code>
+          <code class="ruby">        order = find_or_create_order(order_payload, parsed_order, store, products, customer)</code>
         </li>
       
         <li class="covered" data-hits="7" data-linenumber="28">
           <span class="hits">7</span>
           
-          <code class="ruby">        find_or_create_order(order_payload, parsed_order, store, products, payments, customer)</code>
+          <code class="ruby">        find_or_create_payments(parsed_order, order)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
@@ -1183,295 +1112,295 @@
         <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
-          <code class="ruby">    def find_or_create_payments(parsed_order)</code>
+          <code class="ruby">    def find_or_create_customer(parsed_order)</code>
         </li>
       
         <li class="covered" data-hits="7" data-linenumber="48">
           <span class="hits">7</span>
           
-          <code class="ruby">      payments = []</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="49">
-          <span class="hits">7</span>
-          
-          <code class="ruby">      parsed_order[:payments].each do |order_payment|</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="50">
-          <span class="hits">7</span>
-          
-          <code class="ruby">        payment_type = PaymentType.find_or_create_by(name: order_payment[:type])</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="51">
-          <span class="hits">7</span>
-          
-          <code class="ruby">        payment = Payment.create(value: order_payment[:value], payment_type_id: payment_type.id)</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="52">
-          <span class="hits">7</span>
-          
-          <code class="ruby">        payments.push(payment)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="53">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="54">
-          <span class="hits">7</span>
-          
-          <code class="ruby">      payments</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="55">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="56">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="57">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def find_or_create_customer(parsed_order)</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="58">
-          <span class="hits">7</span>
-          
           <code class="ruby">      customer = parsed_order[:customer]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby">      Customer.create_with(email: customer[:email], contact: customer[:contact])</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="60">
+        <li class="covered" data-hits="7" data-linenumber="50">
           <span class="hits">7</span>
           
           <code class="ruby">              .find_or_create_by(marketplace_id: customer[:externalCode])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="51">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="52">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">    # rubocop:disable Metrics/MethodLength</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
           <code class="ruby">    # rubocop:disable Metrics/AbcSize</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
+        <li class="covered" data-hits="1" data-linenumber="55">
           <span class="hits">1</span>
           
-          <code class="ruby">    def find_or_create_order(order_payload, parsed_order, store, products, payments, customer)</code>
+          <code class="ruby">    def find_or_create_order(order_payload, parsed_order, store, products, customer)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="66">
+        <li class="covered" data-hits="7" data-linenumber="56">
           <span class="hits">7</span>
           
           <code class="ruby">      product_quantity = 0</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="67">
+        <li class="covered" data-hits="14" data-linenumber="57">
           <span class="hits">14</span>
           
           <code class="ruby">      parsed_order[:items].each { |item| product_quantity += item[:quantity] }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="69">
+        <li class="covered" data-hits="7" data-linenumber="59">
           <span class="hits">7</span>
           
           <code class="ruby">      order = Order.new({</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby">                          store: store,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby">                          customer: customer,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
           <code class="ruby">                          marketplace_id: parsed_order[:externalCode],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby">                          subtotal: parsed_order[:subtotal],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="74">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">                          delivery_fee: parsed_order[:deliveryFee],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="75">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">                          total_shipping: parsed_order[:total_shipping],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="76">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">                          total: parsed_order[:total],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="77">
+        <li class="never" data-hits="" data-linenumber="67">
           
           
           <code class="ruby">                          country: parsed_order[:country],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="never" data-hits="" data-linenumber="68">
           
           
           <code class="ruby">                          state: parsed_order[:state],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="79">
+        <li class="never" data-hits="" data-linenumber="69">
           
           
           <code class="ruby">                          city: parsed_order[:city],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="80">
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">                          district: parsed_order[:district],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="81">
+        <li class="never" data-hits="" data-linenumber="71">
           
           
           <code class="ruby">                          street: parsed_order[:street],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby">                          complement: parsed_order[:complement],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="73">
           
           
           <code class="ruby">                          latitude: parsed_order[:latitude],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="never" data-hits="" data-linenumber="74">
           
           
           <code class="ruby">                          longitude: parsed_order[:longitude],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">                          marketplace_creation_date: parsed_order[:dtOrderCreate],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="76">
           
           
           <code class="ruby">                          postal_code: parsed_order[:postalCode],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="87">
+        <li class="never" data-hits="" data-linenumber="77">
           
           
           <code class="ruby">                          address_number: parsed_order[:number],</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="88">
+        <li class="never" data-hits="" data-linenumber="78">
           
           
           <code class="ruby">                          product_quantity: product_quantity,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="89">
+        <li class="never" data-hits="" data-linenumber="79">
           
           
           <code class="ruby">                          marketplace_order_payload: order_payload.to_json,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
           <code class="ruby">                          processed_by_delivery_center: true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby">                        })</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="92">
+        <li class="covered" data-hits="14" data-linenumber="82">
           <span class="hits">14</span>
           
           <code class="ruby">      products.each { |p| OrdersProduct.create(order: order, product: p) }</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="93">
-          <span class="hits">14</span>
-          
-          <code class="ruby">      payments.each { |p| OrdersPayment.create(order: order, payment: p) }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="never" data-hits="" data-linenumber="83">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="95">
+        <li class="covered" data-hits="7" data-linenumber="84">
           <span class="hits">7</span>
           
           <code class="ruby">      order.save</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="85">
+          <span class="hits">7</span>
+          
+          <code class="ruby">      order</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="88">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def find_or_create_payments(parsed_order, order)</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="89">
+          <span class="hits">7</span>
+          
+          <code class="ruby">      payments = []</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="90">
+          <span class="hits">7</span>
+          
+          <code class="ruby">      parsed_order[:payments].each do |order_payment|</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="91">
+          <span class="hits">7</span>
+          
+          <code class="ruby">        payment_type = PaymentType.find_or_create_by(name: order_payment[:type])</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="92">
+          <span class="hits">7</span>
+          
+          <code class="ruby">        payment = Payment.create(value: order_payment[:value], payment_type_id: payment_type.id, order: order)</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="93">
+          <span class="hits">7</span>
+          
+          <code class="ruby">        payments.push(payment)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="95">
+          <span class="hits">7</span>
+          
+          <code class="ruby">      payments</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="96">

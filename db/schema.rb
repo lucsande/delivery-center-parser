@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_050934) do
+ActiveRecord::Schema.define(version: 2021_01_24_050727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,13 +60,6 @@ ActiveRecord::Schema.define(version: 2021_01_24_050934) do
     t.index ["store_id"], name: "index_orders_on_store_id"
   end
 
-  create_table "orders_payments", id: false, force: :cascade do |t|
-    t.bigint "payment_id", null: false
-    t.bigint "order_id", null: false
-    t.index ["order_id", "payment_id"], name: "index_orders_payments_on_order_id_and_payment_id"
-    t.index ["payment_id", "order_id"], name: "index_orders_payments_on_payment_id_and_order_id"
-  end
-
   create_table "orders_products", id: false, force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
@@ -82,9 +75,11 @@ ActiveRecord::Schema.define(version: 2021_01_24_050934) do
 
   create_table "payments", force: :cascade do |t|
     t.bigint "payment_type_id"
+    t.bigint "order_id"
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
     t.index ["payment_type_id"], name: "index_payments_on_payment_type_id"
   end
 
@@ -106,5 +101,6 @@ ActiveRecord::Schema.define(version: 2021_01_24_050934) do
 
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "stores"
+  add_foreign_key "payments", "orders"
   add_foreign_key "payments", "payment_types"
 end
