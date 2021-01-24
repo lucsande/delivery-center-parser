@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_234209) do
+ActiveRecord::Schema.define(version: 2021_01_24_050934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,19 @@ ActiveRecord::Schema.define(version: 2021_01_22_234209) do
     t.index ["marketplace_id"], name: "index_customers_on_marketplace_id"
   end
 
+  create_table "failed_order_logs", force: :cascade do |t|
+    t.string "received_order_json"
+    t.string "error_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "marketplace_id"
     t.bigint "store_id"
     t.float "subtotal"
-    t.float "deivery_fee"
-    t.float "tota_shipping"
+    t.float "delivery_fee"
+    t.float "total_shipping"
     t.float "total"
     t.string "country"
     t.string "state"
@@ -44,16 +51,35 @@ ActiveRecord::Schema.define(version: 2021_01_22_234209) do
     t.string "postal_code"
     t.integer "address_number"
     t.bigint "customer_id"
-    t.bigint "product_id"
     t.string "product_quantity"
-    t.string "payment_type"
     t.string "marketplace_order_payload"
     t.boolean "processed_by_delivery_center", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
-    t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["store_id"], name: "index_orders_on_store_id"
+  end
+
+  create_table "orders_payments", id: false, force: :cascade do |t|
+    t.bigint "payment_id", null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id", "payment_id"], name: "index_orders_payments_on_order_id_and_payment_id"
+    t.index ["payment_id", "order_id"], name: "index_orders_payments_on_payment_id_and_order_id"
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
+    t.index ["product_id", "order_id"], name: "index_orders_products_on_product_id_and_order_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "type"
+    t.float "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_payments_on_type"
   end
 
   create_table "products", force: :cascade do |t|
@@ -73,6 +99,5 @@ ActiveRecord::Schema.define(version: 2021_01_22_234209) do
   end
 
   add_foreign_key "orders", "customers"
-  add_foreign_key "orders", "products"
   add_foreign_key "orders", "stores"
 end

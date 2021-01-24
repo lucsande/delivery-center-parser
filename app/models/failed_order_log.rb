@@ -1,0 +1,2 @@
+class FailedOrderLog < ApplicationRecord
+end

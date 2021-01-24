@@ -1,5 +1,3 @@
-
-
 # module concerning the DeliveryCenter system
 module DeliveryCenter
   # interacts with Delivery Center's API

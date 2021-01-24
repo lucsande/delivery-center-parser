@@ -88,6 +88,7 @@ module Parser
           }
         end
 
+        # rubocop:disable Metrics/MethodLength
         def items_data(marketplace_payload)
           return { items: nil } unless marketplace_payload['order_items']
 
@@ -106,6 +107,7 @@ module Parser
 
           { items: parsed_items }
         end
+        # rubocop:enable Metrics/MethodLength
 
         def payments_data(marketplace_payload)
           return { payments: nil } unless marketplace_payload['payments']
