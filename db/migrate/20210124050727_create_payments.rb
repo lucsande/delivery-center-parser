@@ -1,12 +1,12 @@
 class CreatePayments < ActiveRecord::Migration[5.2]
   def change
     create_table :payments do |t|
-      t.string :type
+      t.references :payment_type, foreign_key: true
       t.float :value
 
       t.timestamps
     end
-
-    add_index :payments, :type
   end
+
+  # add_index :payment_types, :name
 end

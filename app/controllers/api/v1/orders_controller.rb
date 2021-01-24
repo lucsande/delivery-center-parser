@@ -6,12 +6,14 @@ module Api
   module V1
     # receives orders from marketplace, processes them and then send them to DeliveryCenter's server
     class OrdersController < ApplicationController
+      # TODO: create Parser class that generates appropriate parser (eg, Parser::MarketplaceToDeliveyCenter::Order) and pass it to ProcessOrder. but while we have integrations with only one Marketplace, it's ok 
       def create
         processed_order = ProcessOrder.call(params)
-        # responder request com 200 ou erro
+        render json: processed_order, status: :created
+        # TODO
+        # order:payents one_to_many, sem join_table
         # escrever testes com erro e sem erro, ver se cria registros na base, se retorna coisa certa, se chama api, etc
         # escrever docs
-        # TODO
       rescue ParsingError, DeliveryCenter::ApiError => e
         render json: e, status: :bad_request
       end

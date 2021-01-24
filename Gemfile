@@ -57,3 +57,5 @@ gem "vcr", "~> 6.0"
 gem "factory_bot", "~> 5.2"
 
 gem "factory_bot_rails", "~> 5.2"
+
+gem "simplecov", "~> 0.17.1"

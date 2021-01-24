@@ -4,6 +4,8 @@ require 'delivery_center/api'
 # service for parsing orders from the marketplace, send it to Delivery Center and store relevant data in DB
 class ProcessOrder
   class << self
+    # ProcessOrder strongly coupled with Parser::MarketplaceToDeliveyCenter::Order
+    # but while we have integrations with only one Marketplace, it's ok
     def call(order_payload)
       parsed_order = Parser::MarketplaceToDeliveryCenter::OrderPayload.parse(order_payload)
       DeliveryCenter::Api.place_order(parsed_order)
@@ -18,11 +20,13 @@ class ProcessOrder
     private
 
     def create_records(order_payload, parsed_order)
-      store = find_or_create_store(parsed_order)
-      products = find_or_create_products(parsed_order)
-      payments = find_or_create_payments(parsed_order)
-      customer = find_or_create_customer(parsed_order)
-      find_or_create_order(order_payload, parsed_order, store, products, payments, customer)
+      ActiveRecord::Base.transaction do
+        store = find_or_create_store(parsed_order)
+        products = find_or_create_products(parsed_order)
+        payments = find_or_create_payments(parsed_order)
+        customer = find_or_create_customer(parsed_order)
+        find_or_create_order(order_payload, parsed_order, store, products, payments, customer)
+      end
     end
 
     def find_or_create_store(parsed_order)
@@ -34,17 +38,20 @@ class ProcessOrder
       parsed_order[:items].each do |item|
         product = Product.create_with(name: item[:name], price: item[:price])
                          .find_or_create_by(marketplace_id: item[:externalCode])
+
         products.push(product)
       end
+      products
     end
 
     def find_or_create_payments(parsed_order)
       payments = []
       parsed_order[:payments].each do |order_payment|
-        payment = Payment.create_with(value: order_payment[:value])
-                         .find_or_create_by(type: order_payment[:type])
+        payment_type = PaymentType.find_or_create_by(name: order_payment[:type])
+        payment = Payment.create(value: order_payment[:value], payment_type_id: payment_type.id)
         payments.push(payment)
       end
+      payments
     end
 
     def find_or_create_customer(parsed_order)
@@ -58,11 +65,10 @@ class ProcessOrder
     def find_or_create_order(order_payload, parsed_order, store, products, payments, customer)
       product_quantity = 0
       parsed_order[:items].each { |item| product_quantity += item[:quantity] }
-      order = order.new({
+
+      order = Order.new({
                           store: store,
                           customer: customer,
-                          products: products,
-                          payments: payments,
                           marketplace_id: parsed_order[:externalCode],
                           subtotal: parsed_order[:subtotal],
                           delivery_fee: parsed_order[:deliveryFee],
@@ -81,10 +87,12 @@ class ProcessOrder
                           address_number: parsed_order[:number],
                           product_quantity: product_quantity,
                           marketplace_order_payload: order_payload.to_json,
-                          processed: true
+                          processed_by_delivery_center: true
                         })
+      products.each { |p| OrdersProduct.create(order: order, product: p) }
+      payments.each { |p| OrdersPayment.create(order: order, payment: p) }
 
-      order.create
+      order.save
     end
     # rubocop:enable Metrics/MethodLength
     # rubocop:enable Metrics/AbcSize

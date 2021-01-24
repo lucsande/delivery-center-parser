@@ -74,12 +74,18 @@ ActiveRecord::Schema.define(version: 2021_01_24_050934) do
     t.index ["product_id", "order_id"], name: "index_orders_products_on_product_id_and_order_id"
   end
 
+  create_table "payment_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
-    t.string "type"
+    t.bigint "payment_type_id"
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_payments_on_type"
+    t.index ["payment_type_id"], name: "index_payments_on_payment_type_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -100,4 +106,5 @@ ActiveRecord::Schema.define(version: 2021_01_24_050934) do
 
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "stores"
+  add_foreign_key "payments", "payment_types"
 end

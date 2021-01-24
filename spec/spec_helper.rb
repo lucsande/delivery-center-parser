@@ -13,6 +13,12 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov'
+SimpleCov.start do
+  add_filter 'spec'
+  add_filter 'config'
+end
+
 require 'custom_error/parsing_error'
 require './spec/support/helpers/hash_helper'
 require 'webmock/rspec'

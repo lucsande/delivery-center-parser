@@ -139,7 +139,7 @@ module Parser
             missing_fields.push(key) if value.nil?
           end
 
-          err_msg = "One or more fields with information about #{missing_fields.join(', ')} were missing"
+          err_msg = "One or more fields with important information about the #{missing_fields.join(', ')} were missing"
           raise ParsingError, err_msg if missing_fields.count.positive?
         end
       end
