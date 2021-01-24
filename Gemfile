@@ -49,3 +49,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "httparty", "~> 0.18.1"
+
+gem "webmock", "~> 3.11"
+
+gem "vcr", "~> 6.0"
+
+gem "factory_bot", "~> 5.2"
+
+gem "factory_bot_rails", "~> 5.2"

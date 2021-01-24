@@ -15,6 +15,10 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'custom_error/parsing_error'
 require './spec/support/helpers/hash_helper'
+require 'webmock/rspec'
+require 'factory_bot_rails'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   config.include HashHelper
