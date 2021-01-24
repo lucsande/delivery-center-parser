@@ -1,3 +1,5 @@
+
+
 # module concerning the DeliveryCenter system
 module DeliveryCenter
   # interacts with Delivery Center's API
@@ -7,11 +9,11 @@ module DeliveryCenter
     class << self
       def place_order(order)
         headers = { 'Content-Type' => 'application/json', 'X-Sent' => Time.now.strftime('%Hh%M - %d/%m/%y') }
-        res = HTTParty.post(@base_url, body: order.to_json, headers: headers )
+        response = HTTParty.post(@base_url, body: order.to_json, headers: headers)
 
-        raise DeliveryCenter::ApiError, res.body unless res.code == 200
+        raise DeliveryCenter::ApiError, response.body unless response.code == 200
 
-        res
+        response
       end
     end
   end

@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://delivery-center-recruitment-ap.herokuapp.com/
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      X-Sent:
+      - 00h44 - 24/01/21
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Sun, 24 Jan 2021 03:44:44 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html;charset=utf-8
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '217'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: "[externalCode, storeId, subTotal, deliveryFee, total, country, state,
+        city, district, street, complement, latitude, longitude, dtOrderCreate, postalCode,
+        number, customer, items, payments, total_shipping] are required"
+  recorded_at: Sun, 24 Jan 2021 03:44:44 GMT
+recorded_with: VCR 6.0.0
