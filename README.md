@@ -2,7 +2,7 @@
 
 This is a small Rails API project, with just a single endpoint: `POST /api/v1/orders`. 
 
-It receives a JSON with data about an order from a fictional Marketplace, parses it so it is compatible with a fictional Delivery Center API, validates if all required fields are present and then send the parsed order to the Delivery Center API; When order requests can't be processed, error logs are generated and stored in the DB, allowing further monitoring and debugging.
+It receives a JSON with data about an order from a fictional Marketplace, parses it so it is compatible with a fictional Delivery Center API, validates if all required fields are present and then sends the parsed order to the Delivery Center API. When order requests can't be processed, error logs are generated and stored in the DB, allowing further monitoring and debugging.
 
 You can test the application by running `rails s` in your terminal and then use Postman or similar services to make requests to 'http://localhost:3000/api/v1/orders'. Make sure your requests have the header 'Content-Type: application/json' and that its body is in the following format:
 
@@ -102,7 +102,7 @@ This project uses rspec as its testing framework. You can run the tests yourself
 ## TODO
 Unfortunately, for lack of time, some things are still pending, for instance:
 - validate attributes presence, uniqueness, etc in models;
-- check if order already exists in DB before sending it to Delivery Center API, so duplicates are not sent;
+- check if order already exists in DB before sending it to the Delivery Center API, so duplicates are not sent;
 
 ## Author
 This project was made by Lucas Sandeville.
