@@ -43,7 +43,7 @@ RSpec.describe Parser::MarketplaceToDeliveryCenter::OrderPayload do
         context "when marketplace_payload.#{field_path} is missing" do
           it 'raises parsing error' do
             invalid_payload = remove_field_from_hash(marketplace_payload, field_path) # HashHelper method
-            expect { described.parse(invalid_payload) }.to raise_error(CustomError::ParsingError)
+            expect { described.parse(invalid_payload) }.to raise_error(ParsingError)
           end
         end
       end
@@ -60,7 +60,7 @@ RSpec.describe Parser::MarketplaceToDeliveryCenter::OrderPayload do
             invalid_payload = marketplace_payload
             invalid_payload['order_items'] = items.push(invalid_item)
 
-            expect { described.parse(invalid_payload) }.to raise_error(CustomError::ParsingError)
+            expect { described.parse(invalid_payload) }.to raise_error(ParsingError)
           end
         end
       end
@@ -77,7 +77,7 @@ RSpec.describe Parser::MarketplaceToDeliveryCenter::OrderPayload do
             invalid_payload = marketplace_payload
             invalid_payload['payments'] = payments.push(invalid_payment)
 
-            expect { described.parse(invalid_payload) }.to raise_error(CustomError::ParsingError)
+            expect { described.parse(invalid_payload) }.to raise_error(ParsingError)
           end
         end
       end

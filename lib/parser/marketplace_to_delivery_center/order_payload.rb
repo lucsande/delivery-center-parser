@@ -129,12 +129,16 @@ module Parser
 
         # if order has any field with value of nil, it raises an error, since all fields are required
         def validate_order_fields(order_data)
+          missing_fields = []
           order_data.each do |key, value|
             validate_order_fields(value) if value.is_a?(Hash)
             value.each { |item| validate_order_fields(item) } if value.is_a?(Array)
 
-            raise CustomError::ParsingError, "A required field with information about #{key} was missing" if value.nil?
+            missing_fields.push(key) if value.nil?
           end
+
+          err_msg = "One or more fields with information about #{missing_fields.join(', ')} were missing"
+          raise ParsingError, err_msg if missing_fields.count.positive?
         end
       end
     end
