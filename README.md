@@ -1,10 +1,10 @@
 # DeliveryCenterParser
 
-This is a small Rails API project, with just a single endpoint: 'POST /api/v1/orders'. 
+This is a small Rails API project, with just a single endpoint: `POST /api/v1/orders`. 
 
 It receives a JSON with data about an order from a fictional Marketplace, parses it so it is compatible with a fictional Delivery Center API, validates if all required fields are present and then send the parsed order to the Delivery Center API; When order requests can't be processed, error logs are generated and stored in the DB, allowing further monitoring and debugging.
 
-You can test the application by running `rails s` in your terminal and then use Postman or similar services to make requests to 'http://localhost:3000/api/v1/orders'. Make sure you make your request has header 'Content-Type: application/json' and has the following payload as its body:
+You can test the application by running `rails s` in your terminal and then use Postman or similar services to make requests to 'http://localhost:3000/api/v1/orders'. Make sure your requests have the header 'Content-Type: application/json' and that its body is in the following format:
 
 ```json
 {
