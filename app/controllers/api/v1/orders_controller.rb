@@ -10,9 +10,6 @@ module Api
       def create
         processed_order = ProcessOrder.call(params)
         render json: processed_order, status: :created
-        # TODO
-        # order:payents one_to_many, sem join_table
-        # escrever docs
       rescue ParsingError, DeliveryCenter::ApiError => e
         render json: e, status: :bad_request
       end
